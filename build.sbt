@@ -22,6 +22,10 @@ scmInfo := Some(ScmInfo(
 
 // publishTo — managed by sbt-ci-release
 
+// Sonatype Central does not require GPG-signed artifacts — publish unsigned
+// (sbt-ci-release defaults to publishSigned, which needs a PGP key).
+ThisBuild / publishSigned := publish.value
+
 lazy val root = (project in file("."))
   .settings(
     Test / fork := true,
