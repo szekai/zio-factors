@@ -21,10 +21,8 @@ scmInfo := Some(ScmInfo(
 ))
 
 // publishTo — managed by sbt-ci-release
-
-// Sonatype Central does not require GPG-signed artifacts — disable signing
-// (sbt-pgp: a None signing key makes publish skip the detach-sign step).
-ThisBuild / pgpSigningKey := None
+// Signing uses the ephemeral CI key (PGP_SECRET) — Sonatype Central does not
+// verify signatures, so the Sonatype token is the only real credential.
 
 lazy val root = (project in file("."))
   .settings(
