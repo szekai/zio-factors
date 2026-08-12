@@ -21,8 +21,6 @@ scmInfo := Some(ScmInfo(
 ))
 
 // publishTo — managed by sbt-ci-release
-// Signing uses the ephemeral CI key (PGP_SECRET) — Sonatype Central does not
-// verify signatures, so the Sonatype token is the only real credential.
 
 lazy val root = (project in file("."))
   .settings(
