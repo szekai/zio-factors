@@ -21,8 +21,10 @@ scmInfo := Some(ScmInfo(
 ))
 
 // publishTo — managed by sbt-ci-release
-// Note: sbt-ci-release on sbt 2 publishes unsigned via `publish` — Sonatype
-// Central does not require GPG-signed artifacts, so no PGP key is needed.
+
+// Sonatype Central does not require GPG-signed artifacts — disable signing
+// (sbt-pgp: a None signing key makes publish skip the detach-sign step).
+ThisBuild / pgpSigningKey := None
 
 lazy val root = (project in file("."))
   .settings(
